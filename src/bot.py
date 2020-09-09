@@ -3,11 +3,15 @@ from telegram.ext import Updater, MessageHandler, Filters
 import os
 from functools import partial
 
-def classify_image(bot, update, util):
+def classify_image(bot, update):
     image_file = bot.getFile(update.message.photo[-1].file_id)
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
     update.message.reply_markdown(pred)
+
+def start(update, context):
+    """Send a message when the command /start is issued."""
+    update.message.reply_text('Hi!')
 
 def main():
     TOKEN = os.getenv("TOKEN")
@@ -16,7 +20,8 @@ def main():
     dp = updater.dispatcher
 
     util = utils.Utils()
-    classify_image_callback = partial(classify_image, util=util)
+    dp.add_handler(CommandHandler("start", start))
+    classify_image_callback = partial(classify_image)
 
     dp.add_handler(MessageHandler(Filters.photo, classify_image_callback))
 

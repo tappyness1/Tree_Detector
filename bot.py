@@ -24,7 +24,7 @@ def main():
 
     dp.add_handler(MessageHandler(Filters.photo, classify_image_callback))
 
-    PORT = int(os.environ.get("PORT", "5000"))
+    PORT = int(os.environ.get("PORT", "8443"))
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
     updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(HEROKU_APP_NAME, TOKEN))
 

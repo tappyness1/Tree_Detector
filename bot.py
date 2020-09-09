@@ -16,7 +16,7 @@ def start(update, context):
 def main():
     TOKEN = os.getenv("TOKEN")
 
-    updater = Updater(TOKEN)
+    updater = Updater(token = TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))

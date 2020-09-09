@@ -19,7 +19,6 @@ def main():
     updater = Updater(TOKEN)
     dp = updater.dispatcher
 
-    util = utils.Utils()
     dp.add_handler(CommandHandler("start", start))
     classify_image_callback = partial(classify_image)
 

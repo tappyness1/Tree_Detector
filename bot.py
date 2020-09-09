@@ -1,5 +1,5 @@
 from src.inference import load_image, classifier
-from telegram.ext import Updater, MessageHandler, Filters
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import os
 from functools import partial
 

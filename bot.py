@@ -1,4 +1,4 @@
-from src.inference import load_image, classifier
+from inference import load_image, classifier
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import os
 from functools import partial
@@ -13,6 +13,18 @@ def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
 
+def help(update, context):
+    """Send a message when the command /help is issued."""
+    update.message.reply_text('Help!')
+
+def echo(update, context):
+    """Echo the user message."""
+    update.message.reply_text(update.message.text)
+
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
+
 def main():
     TOKEN = os.getenv("TOKEN")
 
@@ -20,13 +32,22 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
-    classify_image_callback = partial(classify_image)
+    dp.add_handler(CommandHandler("help", help))
 
-    dp.add_handler(MessageHandler(Filters.photo, classify_image_callback))
+    # on noncommand i.e message - echo the message on Telegram
+    dp.add_handler(MessageHandler(Filters.text, echo))
+
+    # log all errors
+    dp.add_error_handler(error) 
+    
+    # classify_image_callback = partial(classify_image)
+    # dp.add_handler(MessageHandler(Filters.photo, classify_image_callback))
 
     PORT = int(os.environ.get("PORT", "8443"))
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
     updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(HEROKU_APP_NAME, TOKEN))
+    
+    updater.idle()
 
 
 if __name__ == '__main__':

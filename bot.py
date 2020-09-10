@@ -17,7 +17,7 @@ def classify_image(update, context):
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
     # update.message.reply_markdown(pred)
-    reply_string = "I am " + str(prob) + " certain that this is a " + str(pred)
+    reply_string = "I am " + str(prob) + "% certain that this is a " + str(pred)
     update.message.reply_text(reply_string)
 
 def start(update, context):

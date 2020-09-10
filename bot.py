@@ -17,6 +17,7 @@ def classify_image(update, context):
     """
     # image_file = bot.getFile(update.message.photo[-1].file_id)
     image_file = context.bot.get_file(update.message.photo[-1].file_id)
+    logging.info('Photo received')
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
     # update.message.reply_markdown(pred)
@@ -65,7 +66,6 @@ def main():
     updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(HEROKU_APP_NAME, TOKEN))
     
     updater.idle()
-
 
 if __name__ == '__main__':
     main()

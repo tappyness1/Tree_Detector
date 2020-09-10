@@ -4,6 +4,12 @@ import os
 from functools import partial
 
 def classify_image(bot, update):
+    """[summary]
+
+    Args:
+        bot ([type]): [description]
+        update ([type]): [description]
+    """
     image_file = bot.getFile(update.message.photo[-1].file_id)
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")

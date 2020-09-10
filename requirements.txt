@@ -1,4 +1,3 @@
 python-telegram-bot==12.7
 tensorflow==2.0.0
 pillow
-

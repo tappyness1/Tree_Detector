@@ -42,9 +42,13 @@ Also - make sure to have your configs done, especially your heroku app name and 
 
 add the files - 
 > git add <the files>
+
 git commit every file - 
+
 > git commit -m 'YOUR MESSAGE'
+
 push to heroku - 
+
 > git push heroku master
 
 

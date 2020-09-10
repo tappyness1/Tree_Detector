@@ -9,11 +9,7 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger()
 
 def classify_image(update, context):
-    """[summary]
-
-    Args:
-        bot ([type]): [description]
-        update ([type]): [description]
+    """function to classify the given picture
     """
     # image_file = bot.getFile(update.message.photo[-1].file_id)
     image_file = context.bot.get_file(update.message.photo[-1].file_id)
@@ -21,7 +17,8 @@ def classify_image(update, context):
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
     # update.message.reply_markdown(pred)
-    update.message.reply_text(str(pred))
+    reply_string = "I am " + str(prob) + " certain that this is a " + str(pred)
+    update.message.reply_text(reply_string)
 
 def start(update, context):
     """Send a message when the command /start is issued."""

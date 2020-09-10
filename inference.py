@@ -5,6 +5,23 @@ from tensorflow.keras.preprocessing.image import img_to_array
 import PIL
 import numpy as np
 
+trees = ['Angsana',
+ 'Batoko Plum',
+ 'Broad-leafed Mahogany',
+ 'Casuarina',
+ 'Chengal Pasir',
+ 'Gelam',
+ 'Golden Penda',
+ 'Hankerchief Tree',
+ 'Leopard Tree',
+ 'Madagascar Almond',
+ 'Pink Mempat',
+ 'Rain Tree',
+ 'Red Lip',
+ 'Sea Almond',
+ 'Sea Gutta',
+ 'Trumpet Tree']
+
 # load and prepare the image
 def load_image(filename):
 	# load the image from path
@@ -23,7 +40,7 @@ def classifier(image_file):
 	# predict the class
     result = model.predict(img)
     proba = (round(np.max(result)*100, 2))
-    pred = result[0].argmax()
+    pred = trees[result[0].argmax()]
     # print(pred)
     return pred, proba
 

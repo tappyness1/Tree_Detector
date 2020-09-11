@@ -51,7 +51,6 @@ push to heroku -
 
 > git push heroku master
 
-
 if all goes well, you can interface with your bot. 
 
 ### Data

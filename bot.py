@@ -16,8 +16,11 @@ def classify_image(update, context):
     logging.info('Photo received')
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
-    # update.message.reply_markdown(pred)
-    reply_string = "I am " + str(prob) + "% certain that this is a " + str(pred)
+    pred = str(pred)
+    if pred in ['a', 'e', 'i','o','u']:
+        reply_string = "I am " + str(prob) + "% certain that this is an " + pred
+    else: 
+        reply_string = "I am " + str(prob) + "% certain that this is a " + pred
     update.message.reply_text(reply_string)
 
 def start(update, context):

@@ -17,7 +17,7 @@ def classify_image(update, context):
     image_file.download("image.jpg")
     pred, prob = classifier("image.jpg")
     pred = str(pred)
-    if pred in ['a', 'e', 'i','o','u', 'A','E','I','O','U']:
+    if pred[0] in ['a', 'e', 'i','o','u', 'A','E','I','O','U']:
         reply_string = "I am " + str(prob) + "% certain that this is an " + pred
     else: 
         reply_string = "I am " + str(prob) + "% certain that this is a " + pred

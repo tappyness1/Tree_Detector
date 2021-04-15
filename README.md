@@ -26,13 +26,12 @@ These are the 16 most common trees in Singapore, according to Nparks (https://ww
 ### How to use 
 
 Add the bot - tree-detector-bot (it does not detect trees, just classifies)
+
 Upload an image to the bot
+
 The bot would output a tree name based on the 16 above.
 
 Obviously, if you gave it a non-tree image, it will give you rubbish.
-Also, the classifier needs to be improved.
-
-Probably the last thing is to refactor the code to make it efficient on the memory.
 
 ### How to run the app
 

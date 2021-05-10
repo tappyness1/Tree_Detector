@@ -36,7 +36,7 @@ Obviously, if you gave it a non-tree image, it will give you rubbish.
 ### How to run the app
 
 Make sure you have a heroku account and have created a heroku app on which to run the bot and have created your bot.
-Also - make sure to have your configs done, especially your heroku app name and the telegram bot token. This would be saved on yoru config.ini or on heroku (see settings)
+Also - make sure to have your configs done, especially your heroku app name and the telegram bot token. This would be saved on your config.ini or on heroku (see settings)
 
 
 add the files - 
